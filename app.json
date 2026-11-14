@@ -13,12 +13,18 @@
       "infoPlist": {
         "NSCameraUsageDescription": "Vidra uses the camera for video calls.",
         "NSMicrophoneUsageDescription": "Vidra uses the microphone for calls.",
-        "UIBackgroundModes": ["audio", "voip"]
+        "UIBackgroundModes": [
+          "audio",
+          "voip"
+        ]
       }
     },
     "android": {
       "package": "com.neomaverick.vidra",
-      "adaptiveIcon": { "backgroundColor": "#0B0C12", "foregroundImage": "./assets/adaptive-icon.png" },
+      "adaptiveIcon": {
+        "backgroundColor": "#0B0C12",
+        "foregroundImage": "./assets/adaptive-icon.png"
+      },
       "permissions": [
         "android.permission.CAMERA",
         "android.permission.RECORD_AUDIO",
@@ -29,7 +35,11 @@
       ],
       "predictiveBackGestureEnabled": false
     },
-    "web": { "favicon": "./assets/favicon.png", "output": "single", "bundler": "metro" },
+    "web": {
+      "favicon": "./assets/favicon.png",
+      "output": "single",
+      "bundler": "metro"
+    },
     "plugins": [
       "expo-router",
       [
@@ -39,9 +49,19 @@
           "microphonePermission": "Vidra uses the microphone for calls."
         }
       ],
-      ["expo-build-properties", { "android": { "minSdkVersion": 24 } }]
+      [
+        "expo-build-properties",
+        {
+          "android": {
+            "minSdkVersion": 24,
+            "extraProguardRules": "-keep class org.webrtc.** { *; }\n-dontwarn org.webrtc.**\n-keep class com.oney.WebRTCModule.** { *; }"
+          }
+        }
+      ]
     ],
     "scheme": "vidra",
-    "experiments": { "typedRoutes": true }
+    "experiments": {
+      "typedRoutes": true
+    }
   }
 }
