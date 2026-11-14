@@ -1,0 +1,47 @@
+{
+  "expo": {
+    "name": "Vidra",
+    "slug": "vidra",
+    "version": "1.0.0",
+    "orientation": "portrait",
+    "icon": "./assets/icon.png",
+    "userInterfaceStyle": "dark",
+    "backgroundColor": "#0B0C12",
+    "ios": {
+      "supportsTablet": true,
+      "bundleIdentifier": "com.neomaverick.vidra",
+      "infoPlist": {
+        "NSCameraUsageDescription": "Vidra uses the camera for video calls.",
+        "NSMicrophoneUsageDescription": "Vidra uses the microphone for calls.",
+        "UIBackgroundModes": ["audio", "voip"]
+      }
+    },
+    "android": {
+      "package": "com.neomaverick.vidra",
+      "adaptiveIcon": { "backgroundColor": "#0B0C12", "foregroundImage": "./assets/adaptive-icon.png" },
+      "permissions": [
+        "android.permission.CAMERA",
+        "android.permission.RECORD_AUDIO",
+        "android.permission.MODIFY_AUDIO_SETTINGS",
+        "android.permission.ACCESS_NETWORK_STATE",
+        "android.permission.INTERNET",
+        "android.permission.BLUETOOTH_CONNECT"
+      ],
+      "predictiveBackGestureEnabled": false
+    },
+    "web": { "favicon": "./assets/favicon.png", "output": "single", "bundler": "metro" },
+    "plugins": [
+      "expo-router",
+      [
+        "@config-plugins/react-native-webrtc",
+        {
+          "cameraPermission": "Vidra uses the camera for video calls.",
+          "microphonePermission": "Vidra uses the microphone for calls."
+        }
+      ],
+      ["expo-build-properties", { "android": { "minSdkVersion": 24 } }]
+    ],
+    "scheme": "vidra",
+    "experiments": { "typedRoutes": true }
+  }
+}
